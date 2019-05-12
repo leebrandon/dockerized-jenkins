@@ -6,10 +6,12 @@ JOBDSL_HOME=$WORKINGDIR/job-dsl
 IMAGE_NAME=jenkins-master:lts
 CONTAINER_NAME=jenkins-master-test
 
+touch pluginList.txt
+
 # Look for jenkins docker image, build it if not found
 if [ -z $(docker images -q jenkins-master:lts) ]; then
   echo "No jenkins docker image found.  Building it now..."
-  docker build -t jenkins-master:lts docker
+  docker build -t jenkins-master:lts .
 else
   echo "Jenkins docker image found"
 fi
