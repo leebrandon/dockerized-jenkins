@@ -13,4 +13,5 @@ pushd ${JENKINS_HOME_DIR}
 echo $(pwd)
 cp config.xml ${WORKDIR}/scripts/${BACKUP_DIR}/
 cp -R users ${WORKDIR}/scripts/${BACKUP_DIR}/
-cp -R jobs ${WORKDIR}/scripts/${BACKUP_DIR}/
+rsync -av --include config.xml --exclude builds jobs ${WORKDIR}/scripts/${BACKUP_DIR}/
+
